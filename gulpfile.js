@@ -4,8 +4,6 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
-const eslint = require('gulp-eslint');
-const jasmine = require('gulp-jasmine-phantom');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
@@ -14,11 +12,11 @@ const babel = require('gulp-babel');
 
 gulp.task(
   'default',
-  ['copy-html', 'copy-images', 'styles', 'lint', 'scripts'],
+  ['copy-html', 'copy-images', 'styles', 'scripts'],
   function() {
-    gulp.watch('sass/**/*.scss', ['styles']);
-    gulp.watch('js/**/*.js', ['lint']);
-    gulp.watch('/index.html', ['copy-html']);
+    gulp.watch('src/sass/**/*.scss', ['styles']);
+    gulp.watch('src/*.html', ['copy-html']);
+    gulp.watch('src/js/**/*.js', ['scripts']);
     gulp.watch('./dist/index.html').on('change', browserSync.reload);
 
     browserSync.init({
@@ -31,21 +29,20 @@ gulp.task('dist', [
   'copy-html',
   'copy-images',
   'styles',
-  'lint',
   'scripts-dist',
   'minimize'
 ]);
 
 gulp.task('scripts', function() {
   gulp
-    .src('js/**/*.js')
+    .src('src/js/**/*.js')
     .pipe(concat('all.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('scripts-dist', function() {
   gulp
-    .src('js/**/*.js')
+    .src('src/js/**/*.js')
     .pipe(sourcemaps.init())
     .pipe(
       babel({
@@ -59,16 +56,16 @@ gulp.task('scripts-dist', function() {
 });
 
 gulp.task('copy-html', function() {
-  gulp.src('./index.html').pipe(gulp.dest('./dist'));
+  gulp.src('src/*.html').pipe(gulp.dest('./dist'));
 });
 
 gulp.task('copy-images', function() {
-  gulp.src('img/*').pipe(gulp.dest('dist/img'));
+  gulp.src('src/img/*').pipe(gulp.dest('dist/img'));
 });
 
 gulp.task('styles', function() {
   gulp
-    .src('sass/**/*.scss')
+    .src('src/sass/**/*.scss')
     .pipe(
       sass({
         outputStyle: 'compressed'
@@ -83,34 +80,9 @@ gulp.task('styles', function() {
     .pipe(browserSync.stream());
 });
 
-gulp.task('lint', function() {
-  return (
-    gulp
-      .src(['js/**/*.js'])
-      // eslint() attaches the lint output to the eslint property
-      // of the file object so it can be used by other modules.
-      .pipe(eslint())
-      // eslint.format() outputs the lint results to the console.
-      // Alternatively use eslint.formatEach() (see Docs).
-      .pipe(eslint.format())
-      // To have the process exit with an error code (1) on
-      // lint error, return the stream and pipe to failOnError last.
-      .pipe(eslint.failOnError())
-  );
-});
-
-gulp.task('tests', function() {
-  gulp.src('tests/spec/extraSpec.js').pipe(
-    jasmine({
-      integration: true,
-      vendor: 'js/**/*.js'
-    })
-  );
-});
-
 gulp.task('minimize', () =>
   gulp
-    .src('img/*')
+    .src('src/img/*')
     .pipe(imagemin())
     .pipe(gulp.dest('dist/img'))
 );
