@@ -16,13 +16,27 @@ p {
 
 .maincontent {
   background-color: $light-grey2;
-  min-height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
 }
 
 .map {
   background-color: $ligth-gray;
   height: 400px;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    float: left;
+    height: 400px;
+    width: 70%;
+  }
 }
 
 // HEADER
@@ -86,7 +100,31 @@ header {
     }
   }
 
-  // List of restaurants represented in cards
+  @media screen and (min-width: 768px) {
+    background-color: $bright-orange;
+    float: right;
+    height: 400px;
+    width: 30%;
+  }
+}
+
+//  FOOTER
+
+footer {
+  background-color: $black;
+  color: $white;
+  font-size: 8pt;
+  padding: 25px;
+  text-align: center;
+  text-transform: uppercase;
+
+  a {
+    color: $white;
+  }
+}
+
+// List of restaurants represented in cards
+.restaurants-list {
   p {
     margin: 10px;
   }
@@ -153,22 +191,7 @@ header {
 
     @media screen and (min-width: 1023px) {
       margin: 10px 0 10px 10px;
-      width: 30%;
+      width: 29.5%;
     }
-  }
-}
-
-//  FOOTER
-
-footer {
-  background-color: $black;
-  color: $white;
-  font-size: 8pt;
-  padding: 25px;
-  text-align: center;
-  text-transform: uppercase;
-
-  a {
-    color: $white;
   }
 }
