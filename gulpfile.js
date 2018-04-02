@@ -21,6 +21,7 @@ gulp.task(
     gulp.watch('src/js/main/*.js', ['scripts-main']);
     gulp.watch('src/js/main/*.js', ['scripts-page']);
     gulp.watch('./dist/index.html').on('change', browserSync.reload);
+    gulp.watch('src/sass/**/*.scss').on('change', browserSync.reload);
 
     browserSync.init({
       server: './dist'
