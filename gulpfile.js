@@ -12,12 +12,13 @@ const babel = require('gulp-babel');
 
 gulp.task(
   'default',
-  ['copy-html', 'copy-images', 'styles', 'scripts'],
+  ['copy-html', 'copy-images', 'styles', 'scripts-main', 'scripts-page'],
   function() {
     gulp.watch('src/sass/**/*.scss', ['styles']);
     gulp.watch('src/*.html', ['copy-html']);
     gulp.watch('src/js/**/*.js', ['lint']);
-    gulp.watch('src/js/**/*.js', ['scripts']);
+    gulp.watch('src/js/main/*.js', ['scripts-main']);
+    gulp.watch('src/js/main/*.js', ['scripts-page']);
     gulp.watch('./dist/index.html').on('change', browserSync.reload);
 
     browserSync.init({
@@ -30,21 +31,29 @@ gulp.task('dist', [
   'copy-html',
   'copy-images',
   'styles',
-  'scripts-dist',
+  'scripts-dist-main',
+  'scripts-dist-page',
   'minimize'
 ]);
 
-gulp.task('scripts', function() {
+gulp.task('scripts-main', function() {
   gulp
-    .src('src/js/**/*.js')
-    .pipe(concat('all.js'))
+    .src('src/js/main/*.js')
+    .pipe(concat('restaurant_main.js'))
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('scripts-page', function() {
+  gulp
+    .src('src/js/page/*.js')
+    .pipe(concat('restaurant_info.js'))
     .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('lint', function() {
   return (
     gulp
-      .src(['src/js/*.js', 'dist/js/*.js'])
+      .src(['src/js/**/*.js', 'dist/js/**/*.js'])
       // eslint() attaches the lint output to the eslint property
       // of the file object so it can be used by other modules.
       .pipe(eslint())
@@ -57,9 +66,24 @@ gulp.task('lint', function() {
   );
 });
 
-gulp.task('scripts-dist', function() {
+gulp.task('scripts-dist-main', function() {
   gulp
-    .src('src/js/**/*.js')
+    .src('src/js/main/*.js')
+    .pipe(sourcemaps.init())
+    .pipe(
+      babel({
+        presets: ['env']
+      })
+    )
+    .pipe(concat('all.js'))
+    .pipe(uglify())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('scripts-dist-page', function() {
+  gulp
+    .src('src/js/page/*.js')
     .pipe(sourcemaps.init())
     .pipe(
       babel({
