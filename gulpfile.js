@@ -9,6 +9,7 @@ const uglify = require('gulp-uglify');
 const sourcemaps = require('gulp-sourcemaps');
 const imagemin = require('gulp-imagemin');
 const babel = require('gulp-babel');
+const eslint = require('gulp-eslint');
 
 gulp.task(
   'default',
