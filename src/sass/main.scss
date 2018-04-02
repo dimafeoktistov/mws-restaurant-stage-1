@@ -11,6 +11,12 @@ p {
     family: $font;
     size: 10pt;
   }
+  margin: 0;
+}
+
+.maincontent {
+  background-color: $light-grey2;
+  min-height: 100vh;
 }
 
 .map {
@@ -23,8 +29,6 @@ p {
 
 header {
   background-color: $black;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
   display: flex;
   justify-content: center;
 
@@ -38,8 +42,6 @@ header {
 // List of restaurants
 
 .restaurants-wrapper {
-  display: flex;
-  flex-direction: column;
   padding: 0;
 
   // Restaurant filtering
@@ -51,7 +53,11 @@ header {
     border-bottom-right-radius: 25px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+
+    @media screen and (min-width: 600px) {
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }
 
     h2 {
       color: $white;
@@ -81,17 +87,31 @@ header {
   }
 
   // List of restaurants represented in cards
+  p {
+    margin: 10px;
+  }
 
   ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 auto;
     padding: 0;
+    width: 100%;
+
+    @media screen and (max-width: 600px) {
+      flex-direction: column;
+    }
   }
 
   li {
+    background-color: $white;
     border: 2px solid $ligth-gray;
     border-radius: 10px;
     height: auto;
     list-style-type: none;
-    margin: 0 auto 10px;
+    margin: 5px auto;
     padding: 10px;
     width: 90%;
 
@@ -124,6 +144,16 @@ header {
       background-color: $success-hover;
       background-image: linear-gradient(top, $success-hover, $success-grad);
       cursor: pointer;
+    }
+
+    @media screen and (min-width: 600px) {
+      margin: 10px 0 10px 10px;
+      width: 44%;
+    }
+
+    @media screen and (min-width: 1023px) {
+      margin: 10px 0 10px 10px;
+      width: 30%;
     }
   }
 }
