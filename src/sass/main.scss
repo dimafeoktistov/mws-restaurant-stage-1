@@ -147,6 +147,8 @@ footer {
     background-color: $white;
     border: 2px solid $ligth-gray;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
     height: auto;
     list-style-type: none;
     margin: 5px auto;
@@ -170,17 +172,21 @@ footer {
 
     a {
       background-color: $success;
-      background-image: linear-gradient(top, $success, $success-grad);
+      background-image: linear-gradient(to bottom, $success, $success-grad);
       border-radius: 3px;
       margin-bottom: 15px;
-      padding: 7px 10px 8px;
+      padding: 14px 20px 16px;
       text-align: center;
       text-decoration: none;
     }
 
     a:hover {
       background-color: $success-hover;
-      background-image: linear-gradient(top, $success-hover, $success-grad);
+      background-image: linear-gradient(
+        to bottom,
+        $success-hover,
+        $success-grad
+      );
       cursor: pointer;
     }
 
@@ -193,5 +199,36 @@ footer {
       margin: 10px 0 10px 10px;
       width: 29.5%;
     }
+  }
+
+  @media screen and (min-width: 1025px) {
+    margin: 0 auto;
+    width: 1025px;
+  }
+}
+
+.map-info {
+  display: none;
+
+  @media screen and (min-width: 768px) {
+    background-color: $white;
+    border: 1px solid $gray;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    max-width: 300px;
+    padding: 20px;
+    text-align: justify;
+  }
+}
+
+.restaurant-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  img {
+    height: auto;
+    width: 100%;
   }
 }
