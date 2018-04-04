@@ -26,11 +26,11 @@
   <main id="maincontent" class="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map" class="restaurant-map"></div>
+      <div id="map" class="restaurant-map" role="application" aria-label="Google map for restaurant location"></div>
     </section>
     <!-- End map -->
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" class="breadcrumb" >
+    <ul id="breadcrumb" class="breadcrumb" role="navigation">
       <li><a href="/">Home</a></li>
     </ul>
     <!-- End breadcrumb -->
@@ -39,14 +39,14 @@
      <section id="restaurant-container" class="restaurant-container">
        <h1 id="restaurant-name"></h1>
        <img id="restaurant-img">
-       <p id="restaurant-cuisine" class="restaurant-cuisine"></p>
-       <p id="restaurant-address" class="restaurant-address"></p>
-       <table id="restaurant-hours" class="restaurant-hours"></table>
+       <p id="restaurant-cuisine" class="restaurant-cuisine" aria-label="Cuisine"></p>
+       <p id="restaurant-address" class="restaurant-address" aria-label="Address"></p>
+       <table id="restaurant-hours" class="restaurant-hours" aria-label="Restaurant Hours"></table>
      </section>
      <!-- end restaurant -->
      <!-- Beginning reviews -->
      <section id="reviews-container" class="reviews-container">
-       <ul id="reviews-list" class="reviews-list"></ul>
+       <ul id="reviews-list" class="reviews-list" aria-label="Reviews list"></ul>
      </section>
      <!-- End reviews -->
     </div>
@@ -54,7 +54,7 @@
   <!-- End main -->
 
   <!-- Beginning footer -->
-  <footer>
+  <footer role="contentinfo">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->

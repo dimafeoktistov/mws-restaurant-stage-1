@@ -21,7 +21,7 @@
   <main class="maincontent">
     <div class="content">
       <section id="map-container">
-        <div id="map" class="map"></div>
+        <div id="map" class="map" role="application" aria-label="Google map for finding restaurants"></div>
       </section>
       <section class="restaurants-wrapper">
         <div class="filter-options">
@@ -31,10 +31,10 @@
             <p>You can either click on the marker to view details on restaurant or choose from the list below</p>
           </div>
           <div class="options">
-            <select id="neighborhoods-select" class="neighborhood" name="neighborhoods" onchange="updateRestaurants()">
+            <select id="neighborhoods-select" class="neighborhood" name="neighborhoods" onchange="updateRestaurants()" role="listbox" aria-label="Choose neighborhood">
               <option value="all">All Neighborhoods</option>
             </select>
-            <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+            <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" role="listbox" aria-label="Choose restaurant">
               <option value="all">All Cuisines</option>
             </select>
           </div> <!-- options -->
@@ -51,7 +51,7 @@
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCejQoXsMW6FestdxLCiM4uCny49qz5rHc&libraries=places&callback=initMap"></script>
 
 
-  <footer>
+  <footer role="contentinfo">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
 
