@@ -2,11 +2,13 @@
 <html>
 
 <head>
-  <!-- Normalize.css for better cross-browser consistency -->
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-  <!-- Main CSS file -->
   <link rel="stylesheet" href="css/main.css">
   <title>Restaurant Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Info about restaurant">
 </head>
 
 <body class="inside">
@@ -16,47 +18,49 @@
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
-    <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
-    </ul>
-    <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" class="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <div id="map" class="restaurant-map" role="application" aria-label="Google map for restaurant location"></div>
     </section>
     <!-- End map -->
-    <!-- Beginning restaurant -->
-    <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
-      <img id="restaurant-img">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
-    </section>
-    <!-- end restaurant -->
-    <!-- Beginning reviews -->
-    <section id="reviews-container">
-      <ul id="reviews-list"></ul>
-    </section>
-    <!-- End reviews -->
+    <!-- Beginning breadcrumb -->
+    <ul id="breadcrumb" class="breadcrumb" role="navigation">
+      <li><a href="/">Home</a></li>
+    </ul>
+    <!-- End breadcrumb -->
+    <div class="restaurant-info">
+     <!-- Beginning restaurant -->
+     <section id="restaurant-container" class="restaurant-container">
+       <h1 id="restaurant-name"></h1>
+       <img id="restaurant-img">
+       <p id="restaurant-cuisine" class="restaurant-cuisine" aria-label="Cuisine"></p>
+       <p id="restaurant-address" class="restaurant-address" aria-label="Address"></p>
+       <table id="restaurant-hours" class="restaurant-hours" aria-label="Restaurant Hours"></table>
+     </section>
+     <!-- end restaurant -->
+     <!-- Beginning reviews -->
+     <section id="reviews-container" class="reviews-container">
+       <ul id="reviews-list" class="reviews-list" aria-label="Reviews list"></ul>
+     </section>
+     <!-- End reviews -->
+    </div>
   </main>
   <!-- End main -->
 
   <!-- Beginning footer -->
-  <footer id="footer">
+  <footer role="contentinfo">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
 
   <!-- Beginning scripts -->
-  <script type="application/javascript" charset="utf-8" src="js/restaurant_info.js"></script>>
+  <script type="application/javascript" charset="utf-8" src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCejQoXsMW6FestdxLCiM4uCny49qz5rHc&libraries=places&callback=initMap"></script>
   <!-- End scripts -->
