@@ -224,11 +224,126 @@ footer {
 
 .restaurant-container {
   align-items: center;
+  background-color: $bright-orange;
+  color: $white;
   display: flex;
   flex-direction: column;
 
   img {
     height: auto;
-    width: 100%;
+    width: 95%;
+  }
+
+  h1 {
+    font-family: Arial, sans-serif;
+    font-size: 20pt;
+    font-weight: 200;
+    letter-spacing: 0;
+    line-height: 1.1;
+    margin: 15px 0;
+    text-transform: uppercase;
+  }
+}
+
+.restaurant-cuisine {
+  background-color: $black;
+  color: $gray;
+  font-size: 12pt;
+  font-weight: 300;
+  letter-spacing: 8px;
+  margin: 0;
+  padding: 2px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+.restaurant-address {
+  background-color: $white;
+  color: $black;
+  font-size: 12pt;
+  font-style: italic;
+  font-weight: 300;
+  margin: 0;
+  padding: 2px 0;
+  text-align: center;
+  text-transform: uppercase;
+  width: 90%;
+}
+
+.restaurant-hours {
+  background-color: $white;
+  border: 1px solid $black;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  width: 90%;
+
+  td {
+    border: 1px solid $black;
+  }
+
+  tr:nth-child(even) {
+    background-color: $ligth-gray;
+    border: 1px solid $black;
+  }
+}
+
+.reviews-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 24pt;
+    font-weight: 300;
+    letter-spacing: -1px;
+    margin: 5px;
+  }
+}
+
+.reviews-list {
+  margin: 0 auto;
+  padding: 0;
+
+  li {
+    background-color: $white;
+    border: 2px solid $ligth-gray;
+    list-style-type: none;
+    margin: 5px auto;
+    overflow: hidden;
+    padding: 0 20px 20px;
+    width: 85%;
+  }
+
+  p {
+    margin: 5px;
+    text-align: justify;
+  }
+}
+
+.restaurant-map {
+  height: 400px;
+  width: 100%;
+}
+
+.breadcrumb {
+  font-size: 17px;
+  list-style-type: none;
+  margin: 5px 0;
+  padding-left: 5px;
+
+  li {
+    color: $black;
+    display: inline-block;
+  }
+
+  li::before {
+    color: $black;
+    content: '/\00a0';
+  }
+
+  a {
+    color: $hover-color;
+    text-decoration: none;
   }
 }
