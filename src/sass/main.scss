@@ -243,6 +243,10 @@ footer {
     margin: 15px 0;
     text-transform: uppercase;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 }
 
 .restaurant-cuisine {
@@ -299,6 +303,10 @@ footer {
     letter-spacing: -1px;
     margin: 5px;
   }
+
+  @media screen and (min-width: 768px) {
+    width: 50%;
+  }
 }
 
 .reviews-list {
@@ -330,6 +338,7 @@ footer {
   font-size: 17px;
   list-style-type: none;
   margin: 5px 0;
+  order: 3;
   padding-left: 5px;
 
   li {
@@ -345,5 +354,12 @@ footer {
   a {
     color: $hover-color;
     text-decoration: none;
+  }
+}
+
+.restaurant-info {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-flow: row wrap;
   }
 }
