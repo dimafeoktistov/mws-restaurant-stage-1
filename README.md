@@ -1,4 +1,4 @@
-# Frontend Nanodegree Project - Restaurant Review append
+# Frontend Nanodegree Project - Restaurant Review app
 
 This project is made as a part of Frontend Nanodegree course.
 
