@@ -3,6 +3,13 @@ var map;
 var markers = [];
 
 /**
+ * Register service worker for caching static assets
+ */
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js', { scope: './' });
+}
+
+/**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', event => {
