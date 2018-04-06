@@ -28,17 +28,22 @@ self.addEventListener('install', event => {
 
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames
-          .filter(name => {
-            return name.startsWith('rr-app-') && name !== cacheName;
-          })
-          .map(name => {
-            return caches.delete(name);
-          })
-      );
-    })
+    caches
+      .keys()
+      .then(cacheNames => {
+        return Promise.all(
+          cacheNames
+            .filter(name => {
+              return name.startsWith('rr-app-') && name !== cacheName;
+            })
+            .map(name => {
+              return caches.delete(name);
+            })
+        );
+      })
+      .catch(err => {
+        console.log('err', err);
+      })
   );
 });
 
@@ -46,13 +51,13 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.open(cacheName).then(cache => {
       return cache.match(event.request).then(resp => {
-        return (
-          resp ||
-          fetch(event.request).then(resp => {
-            cache.put(event.request, resp.clone());
-            return resp;
-          })
-        );
+        if (resp) {
+          return resp;
+        }
+        return fetch(event.request).then(resp => {
+          cache.put(event.request, resp.clone());
+          return resp;
+        });
       });
     })
   );
