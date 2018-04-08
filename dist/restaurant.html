@@ -45,7 +45,7 @@
      </section>
      <!-- end restaurant -->
      <!-- Beginning reviews -->
-     <section id="reviews-container" class="reviews-container">
+     <section id="reviews-container" class="reviews-container" tabindex="0">
        <ul id="reviews-list" class="reviews-list" aria-label="Reviews list"></ul>
      </section>
      <!-- End reviews -->
@@ -62,7 +62,7 @@
   <!-- Beginning scripts -->
   <script type="application/javascript" charset="utf-8" src="js/restaurant_info.js"></script>
   <!-- Google Maps -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCejQoXsMW6FestdxLCiM4uCny49qz5rHc&libraries=places&callback=initMap"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCejQoXsMW6FestdxLCiM4uCny49qz5rHc&libraries=places&callback=initMap" onerror="mapError()"></script>
   <!-- End scripts -->
 
 </body>

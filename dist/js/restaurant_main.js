@@ -187,6 +187,11 @@ let restaurants, neighborhoods, cuisines;
 var map;
 var markers = [];
 
+function mapError() {
+  const errorMap = document.getElementById('map');
+  errorMap.innerHTML = 'Failed to load map. Seems like you are offline';
+}
+
 /**
  * Register service worker for caching static assets
  */

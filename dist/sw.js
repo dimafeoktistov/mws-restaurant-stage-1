@@ -48,17 +48,23 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.open(cacheName).then(cache => {
-      return cache.match(event.request).then(resp => {
-        if (resp) {
-          return resp;
-        }
-        return fetch(event.request).then(resp => {
-          cache.put(event.request, resp.clone());
-          return resp;
+  if (
+    event.request.method === 'GET' &&
+    event.request.url.indexOf('browser-sync') === -1 &&
+    event.request.url.indexOf('localhost') >= 0
+  ) {
+    event.respondWith(
+      caches.open(cacheName).then(cache => {
+        return cache.match(event.request).then(resp => {
+          return (
+            resp ||
+            fetch(event.request).then(resp => {
+              cache.put(event.request, resp.clone());
+              return resp;
+            })
+          );
         });
-      });
-    })
-  );
+      })
+    );
+  }
 });
