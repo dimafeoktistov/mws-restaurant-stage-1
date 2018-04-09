@@ -14,6 +14,10 @@ p {
   margin: 0;
 }
 
+body {
+  background-color: $light-grey2;
+}
+
 .maincontent {
   background-color: $light-grey2;
 }
@@ -362,4 +366,23 @@ footer {
     display: flex;
     flex-flow: row wrap;
   }
+}
+
+.offline-alert {
+  background-color: $white;
+  border: 1px solid $black;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  font: $font;
+  margin: auto;
+  padding: 20px;
+  text-align: justify;
+  width: 80%;
+}
+
+.offline {
+  align-items: center;
+  display: flex;
+  height: 90vh;
 }

@@ -25,15 +25,6 @@ gulp.task(
   }
 );
 
-gulp.task('dist', [
-  'copy-html',
-  'copy-images',
-  'styles',
-  'scripts-dist-main',
-  'scripts-dist-page',
-  'minimize'
-]);
-
 gulp.task('scripts-main', function() {
   gulp
     .src('src/js/main/*.js')

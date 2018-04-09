@@ -1,7 +1,7 @@
 const cacheName = 'rr-app-v1';
 const cachedFiles = [
   '/index.html',
-  '/restaurant.html',
+  '/offline.html',
   '/css/main.css',
   '/img/1.jpg',
   '/img/2.jpg',
@@ -14,8 +14,7 @@ const cachedFiles = [
   '/img/9.jpg',
   '/img/10.jpg',
   '/js/restaurant_info.js',
-  '/js/restaurant_main.js',
-  '/sw.js'
+  '/js/restaurant_main.js'
 ];
 
 self.addEventListener('install', event => {
@@ -55,15 +54,21 @@ self.addEventListener('fetch', event => {
   ) {
     event.respondWith(
       caches.open(cacheName).then(cache => {
-        return cache.match(event.request).then(resp => {
-          return (
-            resp ||
-            fetch(event.request).then(resp => {
-              cache.put(event.request, resp.clone());
-              return resp;
-            })
-          );
-        });
+        return cache
+          .match(event.request)
+          .then(resp => {
+            return (
+              resp ||
+              fetch(event.request).then(resp => {
+                cache.put(event.request, resp.clone());
+                return resp;
+              })
+            );
+          })
+          .catch(err => {
+            console.log('err', err);
+            return cache.match('/offline.html');
+          });
       })
     );
   }
